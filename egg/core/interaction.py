@@ -137,7 +137,7 @@ class Interaction:
                     "Appending empty and non-empty interactions logs. "
                     "Normally this shouldn't happen!"
                 )
-            return torch.cat(lst, dim=0)
+            return torch.cat([t.unsqueeze(0) for t in lst], dim=0)
 
         assert interactions, "interaction list must not be empty"
         has_aux_input = interactions[0].aux_input is not None
